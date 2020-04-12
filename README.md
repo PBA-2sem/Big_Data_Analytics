@@ -32,6 +32,12 @@ There are number of replica sets in a MongoDB cluster, each of which contains 3 
 As a first exercise you are required to load reddit data from the link mentioned in 2). With help of map and reduce you
 need to find top 10 “lang” (language) of the documents in reddit. 
 
+### Setup of db
+From assets folder run following command
+```shell 
+mongoimport --db school --collection students --drop --file students.json
+```
+
 - a) Provide implementation of map and reduce function
 
         Javascript
