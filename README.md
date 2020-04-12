@@ -25,7 +25,7 @@ Stolen from: [here](https://docs.mongodb.com/manual/core/sharded-cluster-compone
 
 Stolen from: [here](https://docs.mongodb.com/manual/_images/sharded-cluster-test-architecture.bakedsvg.svg) 
 
-There are number of replica sets in a MongoDB cluster, each of which contains 3 or more mongod nodes. There are multiple shards within the clusters. Mongos communicate with each of the Shards, and the App server in turn communicates with the query router, Mongos. This way the data is partitioned.
+There can be a number of replica sets in a MongoDB cluster, each of which contains 3 or more mongod nodes. There are multiple shards within the clusters. Mongos communicate with each of the Shards, and the App server(config server) in turn communicates with the query router, Mongos. This way the data is partitioned.
 
 ## Exercise: MapReduce with	mongoDB	(warmup)	
 
