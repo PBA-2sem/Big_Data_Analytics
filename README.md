@@ -1,6 +1,7 @@
 # Big_Data_Analytics
 
 ## Exercise: Sharding in MongoDB	
+[Assignment link](<./assets/MongoDBExercise.pdf>)
 
 - What is sharding in mongoDB?
 
