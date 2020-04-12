@@ -120,13 +120,55 @@ you will get error.
 
 - a) Provide implementation of map and reduce function
 
-        Javascript
+```javascript
+// Map function
+function () {
+    // Iterate all hashtags and emit text/ tag as key and add a 1 to the array for each occurance
+    this.entities.hashtags.forEach(t => emit(t.text, 1));
+}
+// Reduce function
+function (key, values) {
+    // Return length of array(1's / count of hashtag)
+    return values.length
+}
+```
 
 - b) Provide execution command for running MapReduce
 
-        Javascript
+```javascript
+db.tweet.mapReduce(
+    // Map function
+    function () {
+        // Iterate all hashtags and emit text/ tag as key and add a 1 to the array for each occurance
+        this.entities.hashtags.forEach(t => emit(t.text, 1));
+    },
+    // Reduce function
+    function (key, values) {
+        // Return length of array(1's / count of hashtag)
+        return values.length
+    },
+    {
+        out: "top_10_tweets",
+        // only returns rows with hashtags
+        query: { "entities.hashtags": { $exists: true } }
+    }
+    // returns student list and sorts desc and returns first 10;
+).find().sort({ 'value': -1 }).limit(10)
+```
+
 
 - c) Provide top 10 recorded out of the sorted result. (hint: use sort on the result returned by
 MapReduce) 
 
-        Javascript
+```javascript
+{ "_id" : "FCBLive", "value" : 27 }
+{ "_id" : "AngularJS", "value" : 21 }
+{ "_id" : "nodejs", "value" : 20 }
+{ "_id" : "LFC", "value" : 19 }
+{ "_id" : "EspanyolFCB", "value" : 18 }
+{ "_id" : "IWCI", "value" : 16 }
+{ "_id" : "webinar", "value" : 16 }
+{ "_id" : "GlobalMoms", "value" : 14 }
+{ "_id" : "javascript", "value" : 14 }
+{ "_id" : "RedBizUK", "value" : 12 }
+```
